@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import './movies.scss';
+
 class Movies extends Component {
     render() {
         return(
