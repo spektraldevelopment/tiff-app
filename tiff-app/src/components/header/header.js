@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 import logo from '../../logo-black.png';
 
@@ -18,7 +19,11 @@ class Header extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">Movies</a>
+                                <Link className="nav-link" to="/movies">Movies</Link>
+                            </li>
+
+                            <li className="nav-item active">
+                                <Link className="nav-link" to="/movie">Movie</Link>
                             </li>
                         </ul>
                     </div>
