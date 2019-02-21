@@ -48,11 +48,11 @@ class Movies extends Component {
         return(
             <div className="container">
                 <div className="row justify-content-center">
-                    <h1 className="col-md-4">Movies</h1>
+                    <h1 className="col-md-6">Movies</h1>
                 </div>
 
                 <div className="row justify-content-center">
-                    <ul className="col-md-4 list-group">{movieList}</ul>
+                    <ul className="col-md-6 list-group">{movieList}</ul>
                 </div>
             </div>
         );

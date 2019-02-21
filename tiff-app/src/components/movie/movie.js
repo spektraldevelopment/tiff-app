@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import queryString from 'query-string'
 import axios from 'axios';
 
+import './movie.scss';
+
 const API_KEY = '5161b4142bf86fb729803d20fcf3ccab';
 
 class Movie extends Component {
@@ -26,10 +28,10 @@ class Movie extends Component {
         });
 
         return (
-            <div>
+            <div className="container movie">
                 <h1>{this.state.title}</h1>
                 <p>{this.state.description}</p>
-                <p>{genres}</p>
+                <p className="genres">{genres}</p>
                 <p>{this.state.tagline}</p>
                 <p>{this.state.runtime} Minutes</p>
             </div>
