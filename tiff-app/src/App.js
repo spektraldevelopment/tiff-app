@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import './App.scss';
 
 import Header from './components/header/header';
@@ -11,9 +11,7 @@ class App extends Component {
     return (
       <div>
           <Header />
-
-          <Redirect from="/" to="/movies" />
-          <Route path="/movies" component={Movies}/>
+          <Route exact path="/" component={Movies}/>
           <Route path="/movie" component={Movie}/>
       </div>
     );

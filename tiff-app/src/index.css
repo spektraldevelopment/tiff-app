@@ -13,9 +13,14 @@ h1 {
 }
 
 p, a {
+  color: #000;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 19px;
   font-weight: 400;
+}
+
+a:hover, a:visited {
+  color: #ff3e1e;
 }
 
 code {

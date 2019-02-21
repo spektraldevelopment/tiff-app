@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
 import axios from 'axios';
 import './movies.scss';
 
@@ -27,7 +26,6 @@ class Movies extends Component {
         axios.get(reqUrl)
             .then((response) => {
                 // handle success
-                console.log("Got a RES: ", response);
                 this.setState({
                     movieList : response.data.results
                 });
@@ -36,31 +34,25 @@ class Movies extends Component {
                 // handle error
                 console.error(error);
             })
-            .then(function () {
-                // always executed
-            });
     }
-
 
     render() {
 
         let movies = this.state.movieList;
-
-        var movieList = Object.keys(movies).map(key => {
-            console.log("Movie!: ", movies[key]);
+        let movieList = Object.keys(movies).map(key => {
             let movie = movies[key];
-            let movieId = `/movie/${movie.id}`;
-            return (<li><Link className="nav-link" to={movieId}>{movie.title}</Link></li>);
+            let movieId = `/movie?movieId=${movie.id}`;
+            return (<li key={movie.id} className="list-group-item"><Link className="nav-link" to={movieId}>{movie.title}</Link></li>);
         });
 
         return(
-            <div className="container m-3">
-                <div className="row justify-content-end">
-                    <h1 class="col-6">Movies</h1>
+            <div className="container">
+                <div className="row justify-content-center">
+                    <h1 className="col-md-4">Movies</h1>
                 </div>
 
-                <div className="row justify-content-end">
-                    <ul class="col-6">{movieList}</ul>
+                <div className="row justify-content-center">
+                    <ul className="col-md-4 list-group">{movieList}</ul>
                 </div>
             </div>
         );

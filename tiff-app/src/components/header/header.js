@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import logo from '../../logo-black.png';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import './header.scss';
 
 class Header extends Component {
@@ -19,7 +18,7 @@ class Header extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/movies">Movies</Link>
+                                <Link className="nav-link" to="/">Movies</Link>
                             </li>
 
                             <li className="nav-item active">
