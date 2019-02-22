@@ -17,7 +17,8 @@ class Movie extends Component {
             description: "",
             genres: [],
             tagline: "",
-            runtime: ""
+            runtime: "",
+            poster: ""
         };
     }
 
@@ -29,11 +30,18 @@ class Movie extends Component {
 
         return (
             <div className="container movie">
-                <h1>{this.state.title}</h1>
-                <p>{this.state.description}</p>
-                <p className="genres">{genres}</p>
-                <p>{this.state.tagline}</p>
-                <p>{this.state.runtime} Minutes</p>
+                <div className="row justify-content-center">
+                    <div className="col">
+                        <img alt="" src={this.state.poster} />
+                    </div>
+                    <div className="col">
+                        <h1>{this.state.title}</h1>
+                        <p>{this.state.description}</p>
+                        <p className="genres">{genres}</p>
+                        <p>{this.state.tagline}</p>
+                        <p>{this.state.runtime} Minutes</p>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -47,12 +55,15 @@ class Movie extends Component {
 
                 const movieInfo = res.data;
 
+                console.log("MOvie Info: ", movieInfo);
+
                 this.setState({ 
                     title : movieInfo.title,
                     description: movieInfo.overview,
                     genres : movieInfo.genres,
                     tagline : movieInfo.tagline,
-                    runtime : movieInfo.runtime
+                    runtime : movieInfo.runtime,
+                    poster: `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movieInfo.poster_path}`
                  })
             })
             .catch(function (error) {
