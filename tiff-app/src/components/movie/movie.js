@@ -13,6 +13,7 @@ class Movie extends Component {
         super(props);
 
         this.state = {
+            isLoading: true,
             title: "",
             description: "",
             genres: [],
@@ -27,8 +28,12 @@ class Movie extends Component {
             return i === this.state.genres.length - 1 ? `${item.name}` : `${item.name}, `;
         });
 
+        
+
         return (
+            
             <div className="container movie">
+                {/* <img src="" /> */}
                 <h1>{this.state.title}</h1>
                 <p>{this.state.description}</p>
                 <p className="genres">{genres}</p>

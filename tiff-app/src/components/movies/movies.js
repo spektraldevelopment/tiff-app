@@ -42,7 +42,24 @@ class Movies extends Component {
         let movieList = Object.keys(movies).map(key => {
             let movie = movies[key];
             let movieId = `/movie?movieId=${movie.id}`;
-            return (<li key={movie.id} className="list-group-item"><Link className="nav-link" to={movieId}>{movie.title}</Link></li>);
+            let imagePath = `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`
+
+            console.log("Movie: ", movie);
+
+            return (
+            <li key={movie.id} className="list-group-item">
+                <Link className="nav-link" to={movieId}>
+                {/* <img className="float-left" alt={movie.title} src={imagePath}/>
+                <div className="float-right">{movie.title}</div> */}
+                <div className="card w-50" >
+                    <img class="card-img-top" src={imagePath} alt={movie.title} />
+                    <div class="card-body float-right">
+                        <h5 class="card-title">{movie.title}</h5>
+                    </div>
+                    </div>
+                </Link>
+            </li>
+            );
         });
 
         return(
