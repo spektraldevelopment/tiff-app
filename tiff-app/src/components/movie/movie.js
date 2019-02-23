@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import queryString from 'query-string'
 import axios from 'axios';
 
+import MovieItem from '../movie-item/movie-item';
+import LoadingScreen from '../loading-screen/loading-screen';
+
 import './movie.scss';
 
 const API_KEY = '5161b4142bf86fb729803d20fcf3ccab';
@@ -18,7 +21,8 @@ class Movie extends Component {
             description: "",
             genres: [],
             tagline: "",
-            runtime: ""
+            runtime: "",
+            poster: ""
         };
     }
 
@@ -31,14 +35,12 @@ class Movie extends Component {
         
 
         return (
-            
-            <div className="container movie">
-                {/* <img src="" /> */}
-                <h1>{this.state.title}</h1>
-                <p>{this.state.description}</p>
-                <p className="genres">{genres}</p>
-                <p>{this.state.tagline}</p>
-                <p>{this.state.runtime} Minutes</p>
+            <div>
+                {this.state.isLoading ? (
+                    <LoadingScreen />
+                ) : (
+                    <MovieItem poster={this.state.poster} title={this.state.title} description={this.state.description} genres={genres} tagline={this.state.tagline} runtime={this.state.runtime}/>
+                )}
             </div>
         );
     }
@@ -53,11 +55,13 @@ class Movie extends Component {
                 const movieInfo = res.data;
 
                 this.setState({ 
+                    isLoading: false,
                     title : movieInfo.title,
                     description: movieInfo.overview,
                     genres : movieInfo.genres,
                     tagline : movieInfo.tagline,
-                    runtime : movieInfo.runtime
+                    runtime : movieInfo.runtime,
+                    poster: `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movieInfo.poster_path}`
                  })
             })
             .catch(function (error) {
