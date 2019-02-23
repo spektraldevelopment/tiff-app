@@ -4,6 +4,16 @@
 
 .card {
     margin: 0 auto;
+
+    img {
+        max-width: 185px;
+        margin: 0 auto;
+        margin-top: 24px;
+    }
+
+    h5 {
+        text-align: center;
+    }
 }
 
 h1 {

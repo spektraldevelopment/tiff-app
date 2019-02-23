@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+
+import LoadingScreen from '../loading-screen/loading-screen';
+
 import './movies.scss';
 
 const API_KEY = '5161b4142bf86fb729803d20fcf3ccab';
@@ -12,6 +15,7 @@ class Movies extends Component {
         super(props);
 
         this.state = {
+            isLoading: true,
             movieList: {}
         };
 
@@ -27,6 +31,7 @@ class Movies extends Component {
             .then((response) => {
                 // handle success
                 this.setState({
+                    isLoading: false,
                     movieList : response.data.results
                 });
             })
@@ -49,13 +54,11 @@ class Movies extends Component {
             return (
             <li key={movie.id} className="list-group-item">
                 <Link className="nav-link" to={movieId}>
-                {/* <img className="float-left" alt={movie.title} src={imagePath}/>
-                <div className="float-right">{movie.title}</div> */}
-                <div className="card w-50" >
-                    <img class="card-img-top" src={imagePath} alt={movie.title} />
-                    <div class="card-body float-right">
-                        <h5 class="card-title">{movie.title}</h5>
-                    </div>
+                    <div className="card" >
+                        <img class="card-img-top" src={imagePath} alt={movie.title} />
+                        <div class="card-body float-right">
+                            <h5 class="card-title">{movie.title}</h5>
+                        </div>
                     </div>
                 </Link>
             </li>
@@ -68,9 +71,13 @@ class Movies extends Component {
                     <h1 className="col-md-6">Movies</h1>
                 </div>
 
-                <div className="row justify-content-center">
-                    <ul className="col-md-6 list-group">{movieList}</ul>
-                </div>
+                {this.state.isLoading ? (
+                    <LoadingScreen />
+                ) : (
+                    <div className="row justify-content-center">
+                        <ul className="col-md-6 list-group">{movieList}</ul>
+                    </div>
+                )}
             </div>
         );
     }
