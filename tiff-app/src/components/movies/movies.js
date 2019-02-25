@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import LoadingScreen from '../loading-screen/loading-screen';
 
+import reel from '../../film-reel.png';
+
 import './movies.scss';
 
 const API_KEY = '5161b4142bf86fb729803d20fcf3ccab';
@@ -56,8 +58,8 @@ class Movies extends Component {
                 <Link className="nav-link" to={movieId}>
                     <div className="card" >
                         <img class="card-img-top" src={imagePath} alt={movie.title} />
-                        <div class="card-body float-right">
-                            <h5 class="card-title">{movie.title}</h5>
+                        <div class="card-body">
+                            <h5 class="card-title"><img src={reel} alt="A film reel"/>{movie.title}</h5>
                         </div>
                     </div>
                 </Link>
